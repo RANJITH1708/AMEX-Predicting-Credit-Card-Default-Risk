@@ -75,6 +75,11 @@ The training dataset consists of following variables:
 
 **Table 1: Data Dictionary**
 
+![image](https://github.com/user-attachments/assets/3512e049-a983-4ed7-af5b-753752be5817)
+![image](https://github.com/user-attachments/assets/f3837baf-114b-428f-b122-bbb3d858da90)
+![image](https://github.com/user-attachments/assets/7bf50355-242a-47a0-8327-ac73e89e1906)
+
+
 
 The initial dataset contains 45,528 observations and 19 variables. There are 10 interval variables, 4 nominal variables, and 5 binary variables including the target variable which is credit card default.
 
@@ -91,6 +96,7 @@ The final data entry issue involved the gender column. While it is normal to inc
 
 **Table 2: Gender**
 
+![image](https://github.com/user-attachments/assets/9ea1f3c4-181c-4c40-bdf3-f24790f614ee)
 
 These were the only observations removed due to data entry errors. Other variables required cleaning, but we addressed these issues without removing rows entirely. After cleaning, the final dataset contained 29,475 observations, which were used for predictive modeling and exploratory data analysis.
 
@@ -99,6 +105,10 @@ The second step we took in the process of cleaning the dataset was checking for 
 
 **Table 3: Missing Numeric Values**
 
+![image](https://github.com/user-attachments/assets/05b57f45-dfea-4ace-b7c9-bcf4fdd5b4f2)
+![image](https://github.com/user-attachments/assets/68d421f8-aab6-4010-b8be-4f446695cbf0)
+![image](https://github.com/user-attachments/assets/6787ecda-394f-4cbb-be31-305c77512f1b)
+![image](https://github.com/user-attachments/assets/7e77637c-5733-4920-86bc-537b68ac283e)
 
 Numeric variables that contain missing values are: no_of_children, total_family_members, yearly_debt_payments and credit_score. The percentage of missing values is relatively low, with a maximum of 1.71% across all variables. Given this low rate, one option could have been to remove rows with missing values. However, we chose to impute these values to keep all the observations. In SAS Miner 15.2, we utilized the Impute Node to complete this step, using the mean.
 
@@ -107,12 +117,21 @@ Among the categorical variables, the only one with missing values is migrant wor
 
 **Table 4: Missing Nominal Values**
 
+![image](https://github.com/user-attachments/assets/4e48acba-038f-405c-aaab-98093e5572dc)
 
 Similarly to the numeric variables discussed above, we are not planning on deleting rows containing missing values for this variable. We have opted to impute it using the mode (most frequently occurring value). Also in this case, the Impute Node was utilized to deal with missing values and the Default Input Method was set to Count for class variables.
 
 The last step we took in the data preprocessing phase was looking at the distribution plots and to look for distribution and possible outliers. For numeric variables below, we can see how multiple variables have right skewed distribution and have outliers:
 
 Chart 1: Numeric Variable Distribution Plots and Skewness
+![image](https://github.com/user-attachments/assets/ab4a5596-b162-4a77-8515-b24ab74eb900)
+![image](https://github.com/user-attachments/assets/6a3ae3d8-8db4-4399-8ef9-c1eacfdabce3)
+![image](https://github.com/user-attachments/assets/4108457f-c973-4c00-b028-dae0bf9f153e)
+![image](https://github.com/user-attachments/assets/344ef915-6331-4b9d-9da6-a3aebcde2f67)
+![image](https://github.com/user-attachments/assets/26cbeda5-75ba-4360-921a-37550a470f61)
+![image](https://github.com/user-attachments/assets/6c01eda7-0e82-4a89-aa56-77edb47d976a)
+![image](https://github.com/user-attachments/assets/0ff256ae-dd18-4a37-8775-d8bd9d602ec8)
+![image](https://github.com/user-attachments/assets/94bfe32e-72e4-4907-b332-b71ecc713590)
 
 To deal with outliers, we decide to use the Transform node in SAS Miner and use the log transformation on all the variables that have skewness higher than 3. In our case, the only variables with skewness higher than 3 are previous defaults, credit limit and net yearly income. After applying the log transformation, all the variables have skewness of less than 1, improving their suitability for predictive modeling.
 
@@ -125,12 +144,21 @@ As mentioned above, our dataset contains 10 interval variables. The following ta
 
 **Table 5: Summary Statistics for Interval Variables**
 
+![image](https://github.com/user-attachments/assets/3d3d7375-3c9c-46c3-878a-5caf75794821)
 
 The tables below are the frequency tables for categorical variables. The last frequency table represents our target binary variable, Credit Card Default.
 
 
 **Table 7: Frequency Tables for Categorical Variables**
 
+![image](https://github.com/user-attachments/assets/adbc6631-ecf0-4955-b7c9-f0cc5545baa1)
+![image](https://github.com/user-attachments/assets/b11af048-e63b-4339-8491-b8e313e054f0)
+![image](https://github.com/user-attachments/assets/0f4b9e1b-b9c2-42f4-b28f-4cb91d157433)
+![image](https://github.com/user-attachments/assets/7573e458-4bc5-44e6-a847-7aaebedf4c84)
+![image](https://github.com/user-attachments/assets/a0d0c6a8-431c-4614-9818-4f62b450c311)
+![image](https://github.com/user-attachments/assets/7ab63241-384b-4086-b2fa-1659ea4b198a)
+![image](https://github.com/user-attachments/assets/aea91300-3065-4312-99c5-163e58a9e4d0)
+![image](https://github.com/user-attachments/assets/89b69bc3-e2c5-49f6-af59-efbaeb04d17f)
 
 Our target variable is credit_card_default. The percentage of individuals defaulting is 9.15%, meaning that the dataset is imbalanced. We plan to address this issue by under sampling the non-defaulting target class to restore equilibrium to the dataset. We will select all the rare primary outcomes (default) and match them with a secondary outcome case (non-default) to create a true 50-50 split of the data.
 
@@ -139,18 +167,22 @@ The existing literature has shown that credit card default is influenced by addi
 
 **Table 8: Credit Card Default By Age Over/Under 30**
 
+![image](https://github.com/user-attachments/assets/eacd48b5-ec75-4cab-917f-645c66693240)
+![image](https://github.com/user-attachments/assets/b27d5efa-d209-459c-a508-15e20acc0dec)
 
 We also wanted to determine if gender plays a role in the expected likelihood of defaulting. Two studies (Achsan et al., 2022; Godman et al., 2016) highlight that males, especially younger ones, tend to struggle more with credit card payments compared to females. Our analysis showed that females are indeed less likely to default: 10.30% of males defaulted, compared to only 6.99% of females. The Chi-Square test further confirms this result as statistically significant, with a p-value below 0.0001. Our findings appear to align with the existing literature on this topic.
 
 
 **Table 9: Credit Card Default by Gender**
 
+![image](https://github.com/user-attachments/assets/31bfa6e5-fe49-469f-a53c-784660fec9c3)
 
 Multicollinearity is one of the biggest issues when creating predictive models. For this reason, we analyzed the correlation between the interval variables.
 
 
 **Table 10: Correlation Matrix Between Interval Variables**
 
+![image](https://github.com/user-attachments/assets/80d1a78c-66fe-4033-a43f-555981ee7c8f)
 
 The variables with the highest correlation are net_yearly_income and credit_limit with a very high correlation of (0.91). The variables with the second highest correlation are no_of_children and total_family_members (0.89). The variables with the third highest correlation are prev_defaults and credit_limit_used(%). The strongest negative correlation is between credit_score and credit_limit_used(%). This makes sense because when the percentage of credit limit used goes up, the credit score tends to go down.
 
@@ -159,6 +191,7 @@ When creating machine learning models, it is important to pay close attention to
 
 **Table 11: Excluded Variables by Correlation**
 
+![image](https://github.com/user-attachments/assets/694dd694-24e8-4edc-b2f3-2764941daf36)
 
 Credit limit and number of children were not the only variables that will not be used in building predictive models. Name, of course, was rejected because it does not provide any predictive value, especially in this case where names were changed because of privacy. ID is another variable that will not be used, and will be given the ID role in SAS Miner.
 
@@ -166,10 +199,11 @@ Two more variables that we decided to remove after analyzing them more in detail
 
 
 **Table 12: Previous Defaults by Credit Card Default**
-
+![image](https://github.com/user-attachments/assets/cf487ef5-e96f-4416-85c5-658d9a5973ad)
 
 
 **Table 13: Previous Defaults by Credit Card Default**
+![image](https://github.com/user-attachments/assets/c0d1fa91-2cfb-46cd-aa11-fe17c147cb3f)
 
 
 Another variable with similar behavior is Credit_Score. After analyzing it closely, an interesting insight was discovered. In our dataset, no individual with a credit score above 699 has defaulted, underscoring the credit score's importance in predicting defaults. We attempted to create a new categorical variable for credit scores based on industry standards—800+ as exceptional, 740-799 as very good, 670-739 as good, 580-669 as fair, and below 580 as poor (MyFICO, 2004). However, the top categories, exceptional and very good, contained only non-defaulting individuals. If we adopted this approach, we would incur in the same complete separation issue that we had above with default last 6 months and previous defaults. For this reason, this approach was not used to create predictive models.
