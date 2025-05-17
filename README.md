@@ -189,6 +189,9 @@ T-test: Mean Credit Score vs Default
 
 **Table 14: T-Test of Mean Credit Score vs. Default**
 
+![image](https://github.com/user-attachments/assets/eab8ab38-b7e7-49d7-87db-59cac57a8c10)
+
+
 
 An examination of the test for the equality of variance (folded F test) shows that the p-value is smaller than 0.05. Consequently, there is enough evidence to reject H0, suggesting that the variances of the two groups are statistically different. For this reason, the Satterthwaite was used.
 
@@ -198,6 +201,9 @@ T-test: Mean Credit Limit Used (%) vs Default
 
 
 **Table 15: Mean Credit Limit Used (%) vs. Default**
+
+![image](https://github.com/user-attachments/assets/3f5cde35-4620-4e1a-9581-b90f6fc7acac)
+
 
 
 An examination of the test for the equality of variance (folded F test) shows that the p-value is smaller than 0.05. Consequently, there is enough evidence to reject H0, suggesting that the variances of the two groups are statistically different. For this reason, the Satterthwaite was used.
@@ -209,6 +215,9 @@ T-test: Mean Number of Years Employed vs Default
 
 **Table 17: T-Test of Mean Number of Days Employed vs Default**
 
+![image](https://github.com/user-attachments/assets/e0d64ee2-5eb9-4cec-8a40-a2bdcfe03347)
+
+
 
 An examination of the test for the equality of variance (folded F test) shows that the p-value is smaller than 0.05. Consequently, there is enough evidence to reject H0, suggesting that the variances of the two groups are statistically different. For this reason, the Satterthwaite was used.
 
@@ -219,6 +228,10 @@ ANOVA test: Occupation Type vs Mean Credit Score
 
 **Table 18: ANOVA Test Occupation Type vs Mean Credit Score**
 
+![image](https://github.com/user-attachments/assets/23267e67-d972-4a66-9051-b79cb3edc33d)
+![image](https://github.com/user-attachments/assets/6b054538-9e6f-425b-ada4-bc03680de617)
+
+
 
 To perform ANOVA, since we need a categorical variable with more than 2 levels, we utilized the occupation type before being aggregated into the professional and non professional group. The p-value of the ANOVA is less than 0.0001. At a significance level of 0.05, we can reject H0. Consequently, there is a statistical difference between the average credit score and at least one of the occupation types. IT staff has the highest while realty agents have the lowest one.
 
@@ -226,6 +239,10 @@ Chi-Square Test: Default vs. Migrant Worker
 
 
 **Table 19: Chi-Square Test Credit Card Default vs Migrant Worker**
+![image](https://github.com/user-attachments/assets/7f7be43a-03c5-41e3-a037-862e53fa0ebe)
+![image](https://github.com/user-attachments/assets/c028e65a-baf4-42cc-9972-205d737a8a27)
+
+
 
 
 The p-value of the chi-square (<0.0001) is smaller than the significance level of 0.05. Therefore, we can reject the null hypothesis (Ho: whether or not a person defaults is independent of their status as migrant worker). This suggests that the two variables are not independent, and the fact that a person is a migrant worker or not does have a statistically significant influence on whether or not a person defaults. As a consequence, being a migrant worker will likely be an important variable when predicting credit card default.
@@ -234,6 +251,8 @@ After conducting data exploration and statistical analysis, we have a clear unde
 
 
 **Table 20: Data Dictionary Final Datasets**
+![image](https://github.com/user-attachments/assets/6074da27-054e-4141-84e5-70aab647df83)
+
 
 
 # Modeling
@@ -255,16 +274,26 @@ Before analyzing the models, it is essential to note that accuracy was prioritiz
 ## Modeling with Credit Variables
 
 The table below presents the metrics for the 26 models developed using the dataset, which includes credit-related variables. The primary objective of this analysis was to identify the most accurate model, rather than interpreting specific variable parameters, to help American Express minimize financial risk. The chosen champion model for this dataset is the larger random forest, which was constructed using 200 trees. This model achieved an accuracy of 95%, matching the stepwise neural network. However, given the importance of specificity in predicting credit card defaults, the random forest was selected due to its higher specificity (0.96 compared to 0.93).
+![image](https://github.com/user-attachments/assets/49d475d1-d20d-4acf-9796-43c61c8e3c00)
+![image](https://github.com/user-attachments/assets/312a5511-2ce8-4860-aca8-80ca38c1f906)
+
+
 
 While the model's accuracy is notably high, it is important to acknowledge potential limitations stemming from the data cleaning process, particularly with credit-specific variables such as credit scores. Nonetheless, our results align closely with prior research, where models incorporating credit variables achieved accuracies ranging from 0.89 to 0.96.
 
 An analysis of the variables selected by the 26 models reveals that credit score and credit limit utilization (%) were consistently chosen across all models. This outcome aligns with expectations based on the exploratory data analysis. Consequently, the second part of this paper focuses on a dataset that excludes credit-related variables to explore alternative predictors.
+![image](https://github.com/user-attachments/assets/ee72a8e0-7706-4e2c-bb42-7d5fdbf9fe4e)
+
 
 Although interpretability was not the primary focus of this part of the project, examining the importance of variables and their effects on the target variable provides valuable insights. The table below presents parameter estimates and odds ratios for the partial least squares regression, one of the most accurate regression models. The standardized estimates indicate that credit score is approximately 35 times more significant than the first non-credit-related interval variable, years of employment. Similarly, credit limit utilization (%) is four times more significant than years of employment.
 
 The odds ratios of the two credit-related variables offer further insights. For credit score, the odds ratio estimate is 0.94, indicating that for each additional unit of credit score, the odds of defaulting decrease by 6%. For credit limit utilization (%), the odds ratio estimate is 1.11, meaning that each 1% increase in credit limit usage raises the odds of defaulting by 11%. Interestingly, the odds ratio for migrant worker status is approximately 1 (0.99), suggesting that the likelihood of default is nearly identical for migrant and non-migrant workers.
+![image](https://github.com/user-attachments/assets/bb5b5a09-60df-42cb-98c9-fb8b925a5907)
+
 
 Conversely, the decision tree, one of the most interpretable models, did not offer any new insights. It produced only two splits, based on credit score and credit limit utilization (%), which were already consistently used by all other models.
+![image](https://github.com/user-attachments/assets/5c977dee-bb92-47f8-a099-6ac9bdffe05c)
+
 
 ## Modeling without Credit Variables
 
@@ -273,23 +302,35 @@ The second part of this project focused on predicting credit card default using 
 These models serve two purposes: highlighting the impact of other variables and addressing scenarios where customers lack a credit history, making credit decisions more challenging. For instance, migrant workers, a focus of this research, are individuals who temporarily relocate to another country for work. Despite possibly having a credit history in their home country, they may lack one in the new country, complicating the process of obtaining credit cards.
 
 As expected, the table below shows a significant reduction in model accuracy without credit-related variables, underscoring their critical role in predicting credit card default. In this context, where accuracy is not the primary objective, the best-performing model was a logistic regression using partial least squares for variable selection, chosen based on accuracy and sensitivity.
+![image](https://github.com/user-attachments/assets/9073fb49-a859-4067-9506-9aa5f3ee2258)
+![image](https://github.com/user-attachments/assets/98da6616-59f2-40a1-8dbe-d3bf84c6e810)
+
 
 With credit-related variables removed, additional variables gained prominence in many models. Car ownership, previously insignificant in most models, has now become the most frequently used variable in the dataset. Other variables that appear more often include years of employment, gender, income, and occupation type. Migrant worker status also appears in more models than before, ranking among the top five most utilized variables.
+![image](https://github.com/user-attachments/assets/ad41ce42-71b8-4321-9036-337aa9e9842a)
 
 As before, we can analyze the odds ratios and parameter estimates from the partial least squares regression. The most significant numeric variable, based on standardized estimates, is years of employment, which is approximately 2.5 times more influential than the log of net income.
 
 For car ownership (0 vs. 1), the odds ratio is 1.42, indicating that individuals without a car have 1.42 times higher odds of defaulting compared to those with a car. For gender (F vs. M), the odds ratio is 0.66, meaning that males have 1.52 times higher odds of defaulting compared to females. For occupation type, the odds ratio is 1.16, suggesting that individuals in non-professional roles have 1.16 times higher odds of defaulting compared to those in professional jobs.
 
 Regarding migrant worker status, the odds ratio has become more distinct from 1, though its effect remains smaller relative to other variables. Migrant workers have 1.06 times higher odds of defaulting compared to non-migrant workers.
+![image](https://github.com/user-attachments/assets/9ab10176-696f-4243-bf79-d1ba84ab15ee)
 
 For this dataset, an additional regression model was included. All variables were selected, but the three interval variables were transformed into categorical variables using the quantile method to examine how odds ratios differ across groups. The odds ratios for age and family members are close to 1, indicating minimal differences between categories. This aligns with their lack of significance in previous models.
 
 For net yearly income, the highest odds ratio is 1.17, suggesting that individuals in the lowest income category have 1.17 times higher odds of defaulting compared to those in the highest income group. For years employed, the highest odds ratio is 1.55, indicating that individuals with 0–2 years of employment have 1.55 times higher odds of defaulting compared to those employed for 7 or more years.
+![image](https://github.com/user-attachments/assets/9df80423-babd-4519-80e5-5fce0fd39e9d)
+
 
 # Additional Models
 
 After analyzing models with and without credit-related variables, we attempted to segment the dataset to uncover additional insights. Initially, we combined the Variable Clustering Node with the Cluster Node, but this approach did not yield any significant results.
 
 Next, we divided the dataset into two groups based on income, using the median to separate "poor" and "rich" customers. Models were rerun for each subset, both with and without credit-related variables. However, the metrics and selected variables remained largely consistent across both groups.
+
+![image](https://github.com/user-attachments/assets/4354cd52-aa1d-430c-8321-07820c2fc5e2)
+![image](https://github.com/user-attachments/assets/8c40da9e-8cc8-40ec-bbfa-ecc570ae86a2)
+![image](https://github.com/user-attachments/assets/9f0c0e7e-a617-4b93-9020-6c676259f64c)
+
 
 Finally, we segmented the dataset based on occupation type, separating observations into "professional" and "non-professional" categories. While this segmentation had little effect when credit variables were included, it produced noticeable differences when using only non-credit variables. The two tables below (professional on top, non-professional on bottom) display the accuracy and other metrics for the top five models. The results indicate that accuracy and other metrics were slightly higher for the professional group. Although the differences are minimal, they could serve as a valuable starting point for future research.
