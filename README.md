@@ -72,8 +72,7 @@ The training dataset consists of following variables:
 **Table 1: Data Dictionary**
 
 ![image](https://github.com/user-attachments/assets/3512e049-a983-4ed7-af5b-753752be5817)
-![image](https://github.com/user-attachments/assets/f3837baf-114b-428f-b122-bbb3d858da90)
-![image](https://github.com/user-attachments/assets/7bf50355-242a-47a0-8327-ac73e89e1906)
+
 
 
 
