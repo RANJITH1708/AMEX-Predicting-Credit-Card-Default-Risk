@@ -1,5 +1,5 @@
 # Saint's
-# Predicting Credit Card Default Risk
+# AMEX Predicting Credit Card Default Risk
 
 Ranjith Kumar Saila,
 Ganesh Sai Uttej Kayala,
